@@ -45,7 +45,7 @@ El frontend en **Vue.js** permite a los usuarios:
 ### Clonar el repositorio:
 
 ```bash
-git clone https://github.com/tuusuario/tu-proyecto.git
+git clone [https://github.com/tuusuario/tu-proyecto.git](https://github.com/ErickFDiaz/interseguro-repo.git)
 cd tu-proyecto
 ```
 
