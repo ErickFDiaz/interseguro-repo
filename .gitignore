@@ -1,0 +1,54 @@
+# Logs (General)
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+# Ignore node_modules for all subprojects
+node_modules/
+
+# Output directories for all subprojects
+dist/
+dist-ssr/
+build/
+coverage/
+
+# Ignore local environment and configuration files
+*.local
+.env
+
+# Vue-specific ignores (interseguro-app)
+interseguro-app/node_modules/
+interseguro-app/dist/
+interseguro-app/dist-ssr/
+interseguro-app/*.local
+interseguro-app/.env
+
+# Matrix service-specific ignores (interseguro-matrix)
+interseguro-matrix/node_modules/
+interseguro-matrix/.env
+
+# Stats service-specific ignores (interseguro-stats)
+interseguro-stats/node_modules/
+interseguro-stats/.env
+
+# Editor directories and files
+.vscode/*
+!.vscode/extensions.json
+.idea/
+.DS_Store
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# Docker
+docker-compose.override.yml
+.dockerignore
+
+# MongoDB data (if applicable)
+mongo-data/

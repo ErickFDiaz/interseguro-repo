@@ -1,0 +1,55 @@
+version: '3.8'
+services:
+  matrix-service:
+    build:
+      context: ./interseguro-matrix
+    ports:
+      - "6060:6060"
+    environment:
+      - PORT=6060
+      - DB_URI=mongodb://matrix-mongo:27017/interserguro-matrix
+      - JWT_SECRET=Int3R$3guR0
+      - STATS_SERVICE_URL=http://stats-service:7070/api/1.0
+      - STATS_TOKEN=Int3R$3guR0$STATS
+    depends_on:
+      - matrix-mongo
+    networks:
+      - api-network
+
+  stats-service:
+    build:
+      context: ./interseguro-stats
+    ports:
+      - "7070:7070"
+    environment:
+      - PORT=7070
+      - TOKEN_STATIC=Int3R$3guR0$STATS
+    networks:
+      - api-network
+
+  matrix-mongo:
+    image: mongo:latest
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongo-data:/data/db
+    networks:
+      - api-network
+
+  vue-app:
+    build:
+      context: ./interseguro-app  # Ruta al proyecto Vue y su Dockerfile
+    ports:
+      - "8080:80"  # Expone el puerto donde se servirá la app Vue
+    depends_on:
+      - matrix-service
+      - stats-service
+    networks:
+      - api-network
+
+networks:
+  api-network:
+    driver: bridge
+
+volumes:
+  mongo-data:
